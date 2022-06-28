@@ -1,6 +1,7 @@
 import "./App.css";
 import Info from "./components/info/Info";
 import Navigation from "./components/navigation/Navigation";
+import ProductsContainer from "./components/productsContainer/ProductsContainer";
 import Slider from "./components/slider/Slider";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Navigation />
       <Slider />
       <Info />
+      <ProductsContainer />
     </>
   );
 }

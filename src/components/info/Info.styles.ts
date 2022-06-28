@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+
   padding-bottom: 100px;
-  margin-top: 100px;
+  padding-top: 50px;
 `;
 
 export const H1 = styled.h1`
@@ -14,19 +15,13 @@ export const H1 = styled.h1`
   margin-bottom: 30px;
 `;
 
-export const Line = styled.div`
-  border: 5px solid #f09d51;
-  width: 10%;
-  border-radius: 10px;
-  margin: 0 auto;
-`;
-
 export const Block = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-top: 80px;
+  margin: 0 auto;
 `;
 
 export const InfoContainer = styled.div``;
@@ -52,4 +47,5 @@ export const ImgContainer = styled.img`
   width: 400px;
   height: 400px;
   object-fit: contain;
+  border-radius: 20px;
 `;
