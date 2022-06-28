@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/footer/Footer";
 import Info from "./components/info/Info";
 import Navigation from "./components/navigation/Navigation";
 import ProductsContainer from "./components/productsContainer/ProductsContainer";
@@ -11,6 +12,7 @@ function App() {
       <Slider />
       <Info />
       <ProductsContainer />
+      <Footer />
     </>
   );
 }

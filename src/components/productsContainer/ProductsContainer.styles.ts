@@ -7,8 +7,7 @@ export const Container = styled.div`
 `;
 
 export const H1 = styled.h1`
-  padding: 20px 30px;
-
+  padding: 0px 30px;
   font-size: 44px;
   text-align: center;
 `;
