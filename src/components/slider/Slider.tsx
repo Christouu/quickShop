@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Arrow,
   Button,
@@ -13,9 +15,7 @@ import {
 
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
-import { useState } from "react";
 import { sliderItems } from "../../data";
-import { Link } from "react-router-dom";
 
 const Slider: React.FC = () => {
   const [slideIndex, setSlideIndex] = useState<number>(0);
