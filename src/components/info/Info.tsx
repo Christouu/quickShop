@@ -4,12 +4,12 @@ import {
   H1,
   ImgContainer,
   Li,
-  Line,
   Text,
   Ul,
 } from "./Info.styles";
 
 import DoneIcon from "@mui/icons-material/Done";
+import Line from "../line/Line";
 
 const Info = () => {
   return (
