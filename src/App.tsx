@@ -1,19 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/footer/Footer";
-import Info from "./components/info/Info";
-import Navigation from "./components/navigation/Navigation";
-import ProductsContainer from "./components/productsContainer/ProductsContainer";
-import Slider from "./components/slider/Slider";
+import NotFound from "./components/notFound/NotFound";
+import Home from "./pages/Home/Home";
+import Work from "./pages/Work/Work";
 
 function App() {
   return (
-    <>
-      <Navigation />
-      <Slider />
-      <Info />
-      <ProductsContainer />
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/work" element={<Work />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
