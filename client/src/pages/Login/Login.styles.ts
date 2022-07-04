@@ -54,3 +54,8 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 `;
+
+export const Error = styled.div`
+  color: red;
+  margin-bottom: 10px;
+`;

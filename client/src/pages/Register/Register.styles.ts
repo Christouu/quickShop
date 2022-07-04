@@ -50,3 +50,7 @@ export const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
+
+export const Error = styled.div`
+  color: red;
+`;
