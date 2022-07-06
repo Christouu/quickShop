@@ -12,10 +12,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const SingleProductContainer = () => {
+const SingleProductContainer = ({ info }: any) => {
+  console.log(info);
+
   return (
     <Wrapper>
-      <H2>Banica</H2>
+      <H2></H2>
       <Container>
         <Image
           src="https://i.ytimg.com/vi/VT4I-VSODRE/maxresdefault.jpg"

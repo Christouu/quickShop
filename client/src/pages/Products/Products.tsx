@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fecthProductsBySearch } from "../../api";
 
 import ChipInput from "material-ui-chip-input";
 import { TextField, Button } from "@material-ui/core";
@@ -10,6 +13,7 @@ import Navigation from "../../components/navigation/Navigation";
 import { Container2, H1, WrapperInput, Wrapper } from "./Products.styles";
 import { InfoContainer } from "../../components/productsContainer/ProductsContainer.styles";
 import SingleProductContainer from "../../components/singleProductContainer/SingleProductContainer";
+import axios from "axios";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -17,15 +21,23 @@ function useQuery() {
 
 const Products = () => {
   const [search, setSearch] = useState<string>("");
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<any>([]);
+
+  const { products, isLoading } = useSelector((state: any) => state.products);
 
   const query = useQuery();
   const history = useNavigate();
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
+  const dispatch = useDispatch();
 
-  const searchProducts = () => {
+  const searchProducts = async () => {
     if (search.trim() || tags) {
+      //@ts-ignore
+      dispatch(fecthProductsBySearch({ search, tags: tags.join(",") }));
+      history(
+        `/post/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
+      );
     } else {
       history("/login");
     }
@@ -43,8 +55,10 @@ const Products = () => {
   };
 
   const handleDelete = (tag: string) => {
-    setTags(tags.filter((t) => t !== tag));
+    setTags(tags.filter((t: any) => t !== tag));
   };
+
+  useEffect(() => {});
 
   return (
     <Container2>
@@ -78,18 +92,9 @@ const Products = () => {
 
       <Wrapper>
         <InfoContainer>
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
+          {products.map((p: any) => (
+            <SingleProductContainer key={p._id} info={p} />
+          ))}
         </InfoContainer>
       </Wrapper>
       <Footer />

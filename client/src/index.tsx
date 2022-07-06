@@ -4,6 +4,16 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./helpers/scrollToTop/ScrollToTop";
+import { Provider } from "react-redux";
+import {
+  legacy_createStore as createStore,
+  applyMiddleware,
+  compose,
+} from "redux";
+import thunk from "redux-thunk";
+import reducers from "./redux/reducers";
+
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,8 +21,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ScrollToTop />
-      <App />
+      <Provider store={store}>
+        <ScrollToTop />
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
