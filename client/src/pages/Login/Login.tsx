@@ -1,6 +1,6 @@
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Button,
   Container,
@@ -11,37 +11,31 @@ import {
   Label,
   Wrapper,
 } from "./Login.styles";
+import { RootState } from "../../redux/store";
+import { login } from "../../redux/apiCalls";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error2, setError] = useState("");
 
-  const history = useNavigate();
+  const { isFetching } = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
-  const handleClick = async (e: React.FormEvent) => {
+  const handleClick = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username) return setError("Username required");
     if (!password) return setError("Password required");
 
-    try {
-      await axios.post("http://localhost:5000/api/auth/login", {
-        username,
-        password,
-      });
-
-      history("/");
-    } catch (e: any) {
-      setError(e.response.data);
-    }
+    login(dispatch, { username, password });
   };
 
   return (
     <Container>
       <Wrapper>
         <H1>SIGN IN</H1>
-        {error && <Error>{error}</Error>}
+        {error2 && <Error>{error2}</Error>}
         <Form>
           <Label htmlFor="username">Username</Label>
           <Input
@@ -57,7 +51,9 @@ const Login = () => {
             id="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick}>Login</Button>
+          <Button onClick={handleClick} disabled={isFetching}>
+            Login
+          </Button>
           <Link
             to="/register"
             style={{
