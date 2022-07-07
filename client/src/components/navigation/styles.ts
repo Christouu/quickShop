@@ -52,7 +52,7 @@ export const Li = styled.li`
   }
 `;
 
-export const Badge = styled.div`
+export const Badge2 = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

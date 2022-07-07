@@ -29,7 +29,10 @@ const SingleProductContainer = () => {
             </Link>
           </Icon>
           <Icon>
-            <Link to={"/"} style={{ textDecoration: "none", color: "green" }}>
+            <Link
+              to={"/products/:id"}
+              style={{ textDecoration: "none", color: "green" }}
+            >
               <SearchIcon />
             </Link>
           </Icon>
