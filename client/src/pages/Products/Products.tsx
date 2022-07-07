@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { publicRequest } from "../../requestMethods";
 
 import ChipInput from "material-ui-chip-input";
 import { TextField, Button } from "@material-ui/core";
@@ -18,6 +19,7 @@ function useQuery() {
 const Products = () => {
   const [search, setSearch] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
+  const [products, setProducts] = useState([]);
 
   const query = useQuery();
   const history = useNavigate();
@@ -45,6 +47,20 @@ const Products = () => {
   const handleDelete = (tag: string) => {
     setTags(tags.filter((t) => t !== tag));
   };
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const products = await publicRequest.get("product/find");
+
+        setProducts(products.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getProducts();
+  }, []);
 
   return (
     <Container2>
@@ -78,18 +94,9 @@ const Products = () => {
 
       <Wrapper>
         <InfoContainer>
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
-          <SingleProductContainer />
+          {products.map((p: any) => (
+            <SingleProductContainer key={p._id} product={p} />
+          ))}
         </InfoContainer>
       </Wrapper>
       <Footer />
