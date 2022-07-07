@@ -12,15 +12,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const SingleProductContainer = () => {
+const SingleProductContainer = ({ product }: any) => {
   return (
     <Wrapper>
-      <H2>Banica</H2>
+      <H2>{product.title}</H2>
       <Container>
-        <Image
-          src="https://i.ytimg.com/vi/VT4I-VSODRE/maxresdefault.jpg"
-          alt="product"
-        />
+        <Image src={product.image} alt="product" />
 
         <Info>
           <Icon>
@@ -30,7 +27,7 @@ const SingleProductContainer = () => {
           </Icon>
           <Icon>
             <Link
-              to={"/products/:id"}
+              to={`/products/${product._id}`}
               style={{ textDecoration: "none", color: "green" }}
             >
               <SearchIcon />
