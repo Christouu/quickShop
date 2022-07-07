@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import {
-  Badge,
+  Badge2,
   BadgeContainer,
   Container,
   Li,
@@ -10,10 +10,14 @@ import {
   Nav,
   Ul,
 } from "./styles";
-
+import { useSelector } from "react-redux";
+import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { RootState } from "../../redux/store";
 
 const Navigation = () => {
+  const cart = useSelector((state: RootState) => state.cart);
+
   return (
     <Container>
       <Nav>
@@ -52,10 +56,10 @@ const Navigation = () => {
           </Ul>
         </Links>
 
-        <Badge>
-          <BadgeContainer>
+        <Badge2>
+          <Badge badgeContent={cart.quantity} color="primary">
             <ShoppingCartIcon style={{ cursor: "pointer" }} />
-          </BadgeContainer>
+          </Badge>
           <Ul>
             <Link
               to={"/login"}
@@ -70,7 +74,7 @@ const Navigation = () => {
               <Li>Регистрация</Li>
             </Link>
           </Ul>
-        </Badge>
+        </Badge2>
       </Nav>
     </Container>
   );
