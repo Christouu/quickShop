@@ -19,7 +19,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error2, setError] = useState("");
 
-  const { isFetching } = useSelector((state: RootState) => state.user);
+  const { isFetching, error } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const handleClick = (e: React.FormEvent) => {
@@ -35,7 +35,7 @@ const Login = () => {
     <Container>
       <Wrapper>
         <H1>SIGN IN</H1>
-        {error2 && <Error>{error2}</Error>}
+        {error2 && <Error>{error2 || error}</Error>}
         <Form>
           <Label htmlFor="username">Username</Label>
           <Input
