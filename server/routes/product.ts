@@ -95,4 +95,17 @@ router.get("/search", async (req: Request, res: Response) => {
   }
 });
 
+//get products on sale
+router.get("/sale", async (req: Request, res: Response) => {
+  try {
+    const productsOnSale = await Product.find({
+      onSale: true,
+    });
+
+    res.status(200).json(productsOnSale);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

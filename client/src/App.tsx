@@ -10,6 +10,7 @@ import ProductInfo from "./pages/ProductInfo/ProductInfo";
 import Products from "./pages/Products/Products";
 import Register from "./pages/Register/Register";
 import Work from "./pages/Work/Work";
+import ProductsOnSale from "./pages/ProductsOnSale/ProductsOnSale";
 
 function App() {
   const user = useSelector((state: RootState) => state.user.currentUser);
@@ -18,6 +19,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/sale" element={<ProductsOnSale />} />
       <Route path="/products/:id" element={<ProductInfo />} />
       <Route path="/work" element={<Work />} />
       <Route path="/about" element={<About />} />
