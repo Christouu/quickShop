@@ -36,7 +36,7 @@ const Navigation = () => {
               <Li>Продукти</Li>
             </Link>
             <Link
-              to={"/productsSale"}
+              to={"/sale"}
               style={{ textDecoration: "none", color: "white" }}
             >
               <Li>Продукти на промоция</Li>
