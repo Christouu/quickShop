@@ -1,5 +1,7 @@
-import { publicRequest } from "../requestMethods";
+import * as api from "../api";
 import { AppDispatch } from "./store";
+
+import { publicRequest } from "../requestMethods";
 import { loginFailure, loginStart, loginSuccess } from "./userRedux";
 
 export const login = async (dispatch: AppDispatch, user: any) => {

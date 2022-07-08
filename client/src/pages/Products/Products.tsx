@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 
 import ChipInput from "material-ui-chip-input";
@@ -12,24 +12,52 @@ import { Container2, H1, WrapperInput, Wrapper } from "./Products.styles";
 import { InfoContainer } from "../../components/productsContainer/ProductsContainer.styles";
 import SingleProductContainer from "../../components/singleProductContainer/SingleProductContainer";
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+import axios from "axios";
+
+// function useQuery() {
+//   return new URLSearchParams(useLocation().search);
+// }
 
 const Products = () => {
   const [search, setSearch] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [products, setProducts] = useState([]);
 
-  const query = useQuery();
   const history = useNavigate();
-  const page = query.get("page") || 1;
-  const searchQuery = query.get("searchQuery");
 
-  const searchProducts = () => {
+  // const query = useQuery();
+  // const page = query.get("page") || 1;
+  // const searchQuery = query.get("searchQuery");
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const products = await publicRequest.get("product/find");
+
+        setProducts(products.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getProducts();
+  }, []);
+
+  const searchProducts = async () => {
     if (search.trim() || tags) {
-    } else {
-      history("/login");
+      try {
+        let response = await axios.get(
+          `http://localhost:5000/api/product/search?searchQuery=${
+            search || "none"
+          }&tags=${tags.join(",")}`
+        );
+
+        console.log(response.data);
+
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -47,20 +75,6 @@ const Products = () => {
   const handleDelete = (tag: string) => {
     setTags(tags.filter((t) => t !== tag));
   };
-
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const products = await publicRequest.get("product/find");
-
-        setProducts(products.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getProducts();
-  }, []);
 
   return (
     <Container2>

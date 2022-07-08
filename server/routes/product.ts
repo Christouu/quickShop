@@ -84,12 +84,12 @@ router.get("/search", async (req: Request, res: Response) => {
 
     const products = await Product.find({
       //@ts-ignore
-      $or: [{ title }, { categories: { $in: tags?.split(",") } }],
+      $or: [{ title }, { categories: { $in: tags.split(",") } }],
     });
     //$or is for matching one or more critiries
     //$in is for searching if it is in the tags array
 
-    res.status(200).json(products);
+    res.json(products);
   } catch (error) {
     res.status(404).json({ error });
   }
