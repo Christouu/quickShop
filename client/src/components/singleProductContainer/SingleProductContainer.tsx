@@ -5,6 +5,7 @@ import {
   Icon,
   Image,
   Info,
+  SaleLogo,
   Wrapper,
 } from "./SingleProductContainer.styles";
 
@@ -19,6 +20,7 @@ const SingleProductContainer = ({ product }: any) => {
       <Container>
         <Image src={product.image} alt="product" />
 
+        {product.onSale && <SaleLogo>Промоция</SaleLogo>}
         <Info>
           <Icon>
             <Link to={"/"} style={{ textDecoration: "none", color: "blue" }}>

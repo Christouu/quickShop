@@ -27,6 +27,7 @@ export const Container = styled.div`
   border-radius: 10px;
   margin-bottom: 20px;
   max-width: 300px;
+  position: relative;
 `;
 
 export const Image = styled.img`
@@ -73,4 +74,16 @@ export const Icon = styled.div`
     background-color: #e9f5f5;
     transform: scale(1.2);
   }
+`;
+
+export const SaleLogo = styled.div`
+  position: absolute;
+  z-index: 100;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
 `;
