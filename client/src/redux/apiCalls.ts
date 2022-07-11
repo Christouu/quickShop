@@ -1,4 +1,3 @@
-import * as api from "../api";
 import { AppDispatch } from "./store";
 
 import { publicRequest } from "../requestMethods";
