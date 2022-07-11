@@ -1,11 +1,13 @@
 import {
   Bottom,
   Center,
+  ColorOption,
   Hr,
   Li,
   LiSpan,
   Logo,
   Sidebar,
+  Title,
   Top,
   Ul,
 } from "./AdminSidebar.styles";
@@ -32,57 +34,66 @@ const AdminSidebar = () => {
       <Hr />
       <Center>
         <Ul>
+          <Title>Main</Title>
           <Li>
-            <DashboardIcon />
+            <DashboardIcon style={{ color: "#6439ff" }} />
             <LiSpan>Dashboard</LiSpan>
           </Li>
+          <Title>Lists</Title>
           <Li>
-            <PersonIcon />
+            <PersonIcon style={{ color: "#6439ff" }} />
             <LiSpan>Users</LiSpan>
           </Li>
           <Li>
-            <InventoryIcon />
+            <InventoryIcon style={{ color: "#6439ff" }} />
             <LiSpan>Products</LiSpan>
           </Li>
           <Li>
-            <BorderColorIcon />
+            <BorderColorIcon style={{ color: "#6439ff" }} />
             <LiSpan>Orders</LiSpan>
           </Li>
           <Li>
-            <LocalShippingIcon />
+            <LocalShippingIcon style={{ color: "#6439ff" }} />
             <LiSpan>Delivery</LiSpan>
           </Li>
+          <Title>Usefull Links</Title>
           <Li>
-            <QueryStatsIcon />
+            <QueryStatsIcon style={{ color: "#6439ff" }} />
             <LiSpan>Stats</LiSpan>
           </Li>
           <Li>
-            <NotificationsActiveIcon />
+            <NotificationsActiveIcon style={{ color: "#6439ff" }} />
             <LiSpan>Notifications</LiSpan>
           </Li>
+          <Title>Service</Title>
           <Li>
-            <SystemSecurityUpdateGoodIcon />
+            <SystemSecurityUpdateGoodIcon style={{ color: "#6439ff" }} />
             <LiSpan>System Health</LiSpan>
           </Li>
           <Li>
-            <RssFeedIcon />
+            <RssFeedIcon style={{ color: "#6439ff" }} />
             <LiSpan>Logs</LiSpan>
           </Li>
           <Li>
-            <SettingsApplicationsIcon />
+            <SettingsApplicationsIcon style={{ color: "#6439ff" }} />
             <LiSpan>Settings</LiSpan>
           </Li>
+          <Title>User</Title>
           <Li>
-            <AccountCircleIcon />
+            <AccountCircleIcon style={{ color: "#6439ff" }} />
             <LiSpan>Profile</LiSpan>
           </Li>
           <Li>
-            <LogoutIcon />
+            <LogoutIcon style={{ color: "#6439ff" }} />
             <LiSpan>Logout</LiSpan>
           </Li>
         </Ul>
       </Center>
-      <Bottom>Colors</Bottom>
+      <Bottom>
+        <ColorOption></ColorOption>
+        <ColorOption></ColorOption>
+        <ColorOption></ColorOption>
+      </Bottom>
     </Sidebar>
   );
 };

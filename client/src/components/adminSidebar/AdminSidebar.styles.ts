@@ -35,12 +35,53 @@ export const Ul = styled.ul`
   padding: 0;
 `;
 
+export const Title = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  color: #999;
+  margin-top: 15px;
+  margin-bottom: 5px;
+`;
+
 export const Li = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  margin-left: 5px;
+
+  &:hover {
+    background-color: #ece8ff;
+  }
 `;
 
-export const LiSpan = styled.span``;
+export const LiSpan = styled.span`
+  margin-left: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #888;
+`;
 
-export const Bottom = styled.div``;
+export const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px;
+`;
+
+export const ColorOption = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 1px solid #7452f8;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:nth-child(1) {
+    background-color: whitesmoke;
+  }
+  &:nth-child(2) {
+    background-color: black;
+  }
+  &:nth-child(3) {
+    background-color: pink;
+  }
+`;
