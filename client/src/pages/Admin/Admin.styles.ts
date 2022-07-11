@@ -11,3 +11,11 @@ export const Container = styled.div`
 export const HomeContainer = styled.div`
   flex: 6;
 `;
+
+export const Widgets = styled.div`
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+`;
+
+export const Charts = styled.div``;
