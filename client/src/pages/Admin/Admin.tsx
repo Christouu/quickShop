@@ -4,13 +4,12 @@ import { Container, HomeContainer } from "./Admin.styles";
 
 const Admin = () => {
   return (
-    <>
-      <AdminNavbar />
-      <Container>
-        <AdminSidebar />
-        <HomeContainer>home</HomeContainer>
-      </Container>
-    </>
+    <Container>
+      <AdminSidebar />
+      <HomeContainer>
+        <AdminNavbar />
+      </HomeContainer>
+    </Container>
   );
 };
 
