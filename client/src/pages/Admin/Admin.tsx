@@ -19,7 +19,7 @@ const Admin = () => {
         </Widgets>
         <Charts>
           <AdminFeatured />
-          <AdminChart />
+          <AdminChart aspect={2 / 1} title={"Last 6 months(revenue)"} />
         </Charts>
       </HomeContainer>
     </Container>
