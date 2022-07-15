@@ -1,3 +1,5 @@
+import AdminChart from "../../components/adminChart/AdminChart";
+import AdminFeatured from "../../components/adminFeatured/AdminFeatured";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
 import AdminWidget from "../../components/adminWidget/AdminWidget";
@@ -15,7 +17,10 @@ const Admin = () => {
           <AdminWidget type="earnings" />
           <AdminWidget type="balance" />
         </Widgets>
-        <Charts>asd</Charts>
+        <Charts>
+          <AdminFeatured />
+          <AdminChart />
+        </Charts>
       </HomeContainer>
     </Container>
   );

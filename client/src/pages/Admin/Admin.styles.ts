@@ -18,4 +18,8 @@ export const Widgets = styled.div`
   gap: 20px;
 `;
 
-export const Charts = styled.div``;
+export const Charts = styled.div`
+  display: flex;
+  padding: 5px 20px;
+  gap: 20px;
+`;
