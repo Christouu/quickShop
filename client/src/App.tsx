@@ -12,6 +12,7 @@ import Register from "./pages/Register/Register";
 import Work from "./pages/Work/Work";
 import ProductsOnSale from "./pages/ProductsOnSale/ProductsOnSale";
 import Admin from "./pages/Admin/Admin";
+import AdminUsers from "./pages/AdminUsers/AdminUsers";
 
 function App() {
   const user = useSelector((state: RootState) => state.user.currentUser);
@@ -26,6 +27,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/admin">
         <Route index element={<Admin />} />
+        <Route path="users" element={<AdminUsers />} />
       </Route>
 
       <Route path="/login" element={user ? <Navigate to={"/"} /> : <Login />} />

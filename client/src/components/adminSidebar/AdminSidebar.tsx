@@ -24,6 +24,7 @@ import RssFeedIcon from "@mui/icons-material/RssFeed";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { Link } from "react-router-dom";
 
 const AdminSidebar = () => {
   return (
@@ -35,15 +36,19 @@ const AdminSidebar = () => {
       <Center>
         <Ul>
           <Title>Main</Title>
-          <Li>
-            <DashboardIcon style={{ color: "#6439ff" }} />
-            <LiSpan>Dashboard</LiSpan>
-          </Li>
+          <Link to={"/admin"} style={{ textDecoration: "none" }}>
+            <Li>
+              <DashboardIcon style={{ color: "#6439ff" }} />
+              <LiSpan>Dashboard</LiSpan>
+            </Li>
+          </Link>
           <Title>Lists</Title>
-          <Li>
-            <PersonIcon style={{ color: "#6439ff" }} />
-            <LiSpan>Users</LiSpan>
-          </Li>
+          <Link to={"/admin/users"} style={{ textDecoration: "none" }}>
+            <Li>
+              <PersonIcon style={{ color: "#6439ff" }} />
+              <LiSpan>Users</LiSpan>
+            </Li>
+          </Link>
           <Li>
             <InventoryIcon style={{ color: "#6439ff" }} />
             <LiSpan>Products</LiSpan>
