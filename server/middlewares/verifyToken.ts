@@ -7,7 +7,11 @@ interface IUserRequest extends express.Request {
   isAdmin: boolean;
 }
 
-const verifyToken = (req: IUserRequest, res: Response, next: NextFunction) => {
+export const verifyToken = (
+  req: IUserRequest,
+  res: Response,
+  next: NextFunction
+) => {
   const authHeader = req.headers.token as string;
 
   if (authHeader) {
@@ -25,7 +29,7 @@ const verifyToken = (req: IUserRequest, res: Response, next: NextFunction) => {
   }
 };
 
-const verifyTokenAndAuthorization = (
+export const verifyTokenAndAuthorization = (
   req: IUserRequest,
   res: Response,
   next: NextFunction
@@ -39,7 +43,7 @@ const verifyTokenAndAuthorization = (
   });
 };
 
-const verifyTokenAndAdmin = (
+export const verifyTokenAndAdmin = (
   req: IUserRequest,
   res: Response,
   next: NextFunction
@@ -53,10 +57,4 @@ const verifyTokenAndAdmin = (
         .json("You are not an Admin, you are not allowed to do this operation");
     }
   });
-};
-
-module.exports = {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
 };

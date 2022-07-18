@@ -1,10 +1,12 @@
+import { useEffect, useState } from "react";
 import "./AdminList.css";
 import { userRows } from "../../dataTable";
 import { Container } from "./AdminList.styles";
+import { privateRequest, publicRequest } from "../../requestMethods";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
 const userColumns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "_id", headerName: "ID", width: 70 },
   {
     field: "user",
     headerName: "User",
@@ -53,10 +55,27 @@ const actionColumn: GridColDef[] = [
   },
 ];
 const AdminList = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await privateRequest.get("user");
+        console.log(response.data);
+
+        setUsers(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUsers();
+  }, []);
+
   return (
     <Container>
       <DataGrid
-        rows={userRows}
+        rows={users}
         columns={userColumns.concat(actionColumn)}
         pageSize={25}
         rowsPerPageOptions={[25]}
