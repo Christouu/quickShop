@@ -1,0 +1,55 @@
+.cellWithImg {
+  display: flex;
+  align-items: center;
+}
+
+.cellImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.cellWithStatus {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.active {
+  color: green;
+  background-color: rgb(0, 214, 0);
+  font-weight: bold;
+}
+.passive {
+  color: goldenrod;
+  background-color: rgb(252, 220, 138);
+  font-weight: bold;
+}
+.pending {
+  color: red;
+  background-color: rgb(248, 139, 139);
+  font-weight: bold;
+}
+
+.cellAction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.viewButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: darkblue;
+  border: 1px solid rgba(0, 0, 139, 0.445);
+  cursor: pointer;
+}
+
+.deleteButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: crimson;
+  border: 1px solid rgba(220, 20, 60, 0.37);
+  cursor: pointer;
+}
