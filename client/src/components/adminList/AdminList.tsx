@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import "./AdminList.css";
 import { Container } from "./AdminList.styles";
-import { privateRequest } from "../../requestMethods";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
 const userColumns: GridColDef[] = [
@@ -30,6 +28,42 @@ const userColumns: GridColDef[] = [
   },
 ];
 
+const productColumns: GridColDef[] = [
+  { field: "_id", headerName: "ID", width: 240 },
+  {
+    field: "title",
+    headerName: "Title",
+    width: 250,
+    renderCell: (params: GridValueGetterParams) => (
+      <div className="cellWithImg">
+        <img className="cellImg" src={params.row.image} alt="avatar" />
+        {params.row.title}
+      </div>
+    ),
+  },
+  { field: "price", headerName: "Price", width: 90 },
+  {
+    field: "quantity",
+    headerName: "Quantity",
+    width: 90,
+  },
+  {
+    field: "onSale",
+    headerName: "On Sale",
+    width: 90,
+  },
+  {
+    field: "allKinds",
+    headerName: "All Kinds",
+    width: 90,
+  },
+  {
+    field: "categories",
+    headerName: "Categories",
+    width: 350,
+  },
+];
+
 const actionColumn: GridColDef[] = [
   {
     field: "action",
@@ -45,29 +79,16 @@ const actionColumn: GridColDef[] = [
     },
   },
 ];
-const AdminList = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await privateRequest.get("user");
-        console.log(response.data);
-
-        setUsers(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getUsers();
-  }, []);
-
+const AdminList = ({ data, type }: any) => {
   return (
     <Container>
       <DataGrid
-        rows={users}
-        columns={userColumns.concat(actionColumn)}
+        rows={data}
+        columns={
+          type === "users"
+            ? userColumns.concat(actionColumn)
+            : productColumns.concat(actionColumn)
+        }
         pageSize={25}
         rowsPerPageOptions={[25]}
         checkboxSelection

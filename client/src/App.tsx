@@ -13,6 +13,7 @@ import Work from "./pages/Work/Work";
 import ProductsOnSale from "./pages/ProductsOnSale/ProductsOnSale";
 import Admin from "./pages/Admin/Admin";
 import AdminUsers from "./pages/AdminUsers/AdminUsers";
+import AdminProducts from "./pages/AdminProducts/AdminProducts";
 
 function App() {
   const user = useSelector((state: RootState) => state.user.currentUser);
@@ -28,6 +29,7 @@ function App() {
       <Route path="/admin">
         <Route index element={<Admin />} />
         <Route path="users" element={<AdminUsers />} />
+        <Route path="products" element={<AdminProducts />} />
       </Route>
 
       <Route path="/login" element={user ? <Navigate to={"/"} /> : <Login />} />

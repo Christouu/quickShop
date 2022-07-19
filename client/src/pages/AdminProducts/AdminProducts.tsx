@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
-import { privateRequest } from "../../requestMethods";
-import { Container, ListContainer } from "./AdminUsers.styles";
-
 import AdminList from "../../components/adminList/AdminList";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
+import { publicRequest } from "../../requestMethods";
+import { Container, ListContainer } from "./AdminProducts.styles";
 
-const AdminUsers = () => {
-  const [users, setUsers] = useState([]);
+const AdminProducts = () => {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const getUsers = async () => {
+    const getProducts = async () => {
       try {
-        const response = await privateRequest.get("user");
+        const response = await publicRequest.get("product/find");
         console.log(response.data);
 
-        setUsers(response.data);
+        setProducts(response.data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    getUsers();
+    getProducts();
   }, []);
 
   return (
@@ -29,10 +28,10 @@ const AdminUsers = () => {
       <AdminSidebar />
       <ListContainer>
         <AdminNavbar />
-        <AdminList data={users} type="users" />
+        <AdminList data={products} type="products" />
       </ListContainer>
     </Container>
   );
 };
 
-export default AdminUsers;
+export default AdminProducts;
