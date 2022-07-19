@@ -57,9 +57,13 @@ const Navigation = () => {
         </Links>
 
         <Badge2>
-          <Badge badgeContent={cart.quantity} color="primary">
-            <ShoppingCartIcon style={{ cursor: "pointer" }} />
-          </Badge>
+          <Link to={"/cart"} style={{ textDecoration: "none", color: "white" }}>
+            <BadgeContainer>
+              <Badge badgeContent={cart.quantity} color="primary">
+                <ShoppingCartIcon style={{ cursor: "pointer" }} />
+              </Badge>
+            </BadgeContainer>
+          </Link>
           <Ul>
             <Link
               to={"/login"}

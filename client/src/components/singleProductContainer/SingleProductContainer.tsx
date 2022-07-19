@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartRedux";
 import {
   Container,
   H2,
@@ -14,6 +16,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const SingleProductContainer = ({ product }: any) => {
+  const dispatch = useDispatch();
+
+  const handleCart = () => {
+    dispatch(addProduct(product));
+  };
+
   return (
     <Wrapper>
       <H2>{product.title}</H2>
@@ -22,7 +30,7 @@ const SingleProductContainer = ({ product }: any) => {
 
         {product.onSale && <SaleLogo>Промоция</SaleLogo>}
         <Info>
-          <Icon>
+          <Icon onClick={handleCart}>
             <Link to={"/"} style={{ textDecoration: "none", color: "blue" }}>
               <ShoppingCartIcon />
             </Link>
