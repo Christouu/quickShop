@@ -5,15 +5,13 @@ const router = require("express").Router();
 const User = require("../models/User");
 
 //get users
-router.get("/", verifyTokenAndAdmin, async (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
-    const users = await User.find();
-
-    const { password, ...restInfo } = users._doc;
+    const users = await User.find({});
 
     return res.status(200).json(users);
   } catch (error) {
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 });
 

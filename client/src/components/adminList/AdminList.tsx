@@ -6,10 +6,10 @@ import { privateRequest, publicRequest } from "../../requestMethods";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
 const userColumns: GridColDef[] = [
-  { field: "_id", headerName: "ID", width: 70 },
+  { field: "_id", headerName: "ID", width: 240 },
   {
-    field: "user",
-    headerName: "User",
+    field: "username",
+    headerName: "Username",
     width: 180,
     renderCell: (params: GridValueGetterParams) => (
       <div className="cellWithImg">
@@ -20,22 +20,14 @@ const userColumns: GridColDef[] = [
   },
   { field: "email", headerName: "Email", width: 180 },
   {
-    field: "age",
-    headerName: "Age",
-    type: "number",
+    field: "isAdmin",
+    headerName: "Is Admin",
     width: 90,
   },
   {
-    field: "status",
-    headerName: "Status",
+    field: "createdAt",
+    headerName: "Created",
     width: 160,
-    renderCell: (params: GridValueGetterParams) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
   },
 ];
 
@@ -80,6 +72,7 @@ const AdminList = () => {
         pageSize={25}
         rowsPerPageOptions={[25]}
         checkboxSelection
+        getRowId={(row) => row._id}
       />
     </Container>
   );
