@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./AdminList.css";
-import { userRows } from "../../dataTable";
 import { Container } from "./AdminList.styles";
-import { privateRequest, publicRequest } from "../../requestMethods";
+import { privateRequest } from "../../requestMethods";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
 const userColumns: GridColDef[] = [
