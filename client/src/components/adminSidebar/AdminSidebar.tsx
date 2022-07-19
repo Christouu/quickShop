@@ -49,10 +49,12 @@ const AdminSidebar = () => {
               <LiSpan>Users</LiSpan>
             </Li>
           </Link>
-          <Li>
-            <InventoryIcon style={{ color: "#6439ff" }} />
-            <LiSpan>Products</LiSpan>
-          </Li>
+          <Link to={"/admin/products"} style={{ textDecoration: "none" }}>
+            <Li>
+              <InventoryIcon style={{ color: "#6439ff" }} />
+              <LiSpan>Products</LiSpan>
+            </Li>
+          </Link>
           <Li>
             <BorderColorIcon style={{ color: "#6439ff" }} />
             <LiSpan>Orders</LiSpan>
