@@ -7,19 +7,14 @@ import {
   AmountContainer,
   Button,
   Container,
-  Desc,
-  Filter,
-  FilterColor,
-  FilterContainer,
-  FilterSize,
-  FilterSizeOption,
-  FilterTitle,
+  Description,
   Image,
   ImageContainer,
   InfoContainer,
   Price,
   Title,
   Wrapper,
+  WrapperWhite,
 } from "./ProductInfo.styles";
 
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -28,29 +23,30 @@ import { addProduct } from "../../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/footer/Footer";
+import { publicRequest } from "../../requestMethods";
 
 const ProductInfo: React.FC = () => {
+  const [product, setProduct] = useState<any>({});
+  const [quantity, setQuantity] = useState<number>(1);
+
   const dispatch = useDispatch();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [product, setProduct] = useState<any>({});
-  const [quantity, setQuantity] = useState<number>(1);
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
 
-  //   useEffect(() => {
-  //     const getProduct = async () => {
-  //       try {
-  //         const res = await publicRequest.get(`/products/find/${id}`);
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get(`/product/find/${id}`);
+        console.log(res.data);
 
-  //         setProduct(res.data);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     };
+        setProduct(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //     getProduct();
-  //   }, [id]);
+    getProduct();
+  }, [id]);
 
   const handleQuantity = (string: string) => {
     if (string === "desc") {
@@ -62,54 +58,42 @@ const ProductInfo: React.FC = () => {
 
   const handleClick = () => {
     //handle cart
-    dispatch(addProduct({ ...product, quantity, size, color }));
+    dispatch(addProduct({ ...product, quantity }));
   };
 
   return (
     <Container>
       <Navigation />
-
       <Wrapper>
-        <ImageContainer>
-          <Image src={product.image} />
-        </ImageContainer>
-        <InfoContainer>
-          <Title>{product.title}</Title>
-          <Desc>{product.desc}</Desc>
-          <Price>$ {product.price}</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              {product.color?.map((c: string) => (
-                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
-              ))}
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {product.size?.map((c: string) => (
-                  <FilterSizeOption key={c}>{c}</FilterSizeOption>
-                ))}
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
-          <AddContainer>
-            <AmountContainer>
-              <RemoveIcon
-                style={{ cursor: "pointer" }}
-                onClick={() => handleQuantity("desc")}
-              />
-              <Amount>{quantity}</Amount>
-              <AddIcon
-                style={{ cursor: "pointer" }}
-                onClick={() => handleQuantity("inc")}
-              />
-            </AmountContainer>
-            <Button onClick={handleClick}>ADD TO CART</Button>
-          </AddContainer>
-        </InfoContainer>
+        <WrapperWhite>
+          <ImageContainer>
+            <Image src={product.image} />
+          </ImageContainer>
+          <InfoContainer>
+            <Title>{product.title}</Title>
+            <Price>$ {product.price}</Price>
+            {product?.description?.map((d: any, index: any) => (
+              <Description key={index}>{d}</Description>
+            ))}
+            <AddContainer>
+              <AmountContainer>
+                Broika
+                <RemoveIcon
+                  style={{ cursor: "pointer", marginLeft: "10px" }}
+                  onClick={() => handleQuantity("desc")}
+                />
+                <Amount>{quantity}</Amount>
+                <AddIcon
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleQuantity("inc")}
+                />
+              </AmountContainer>
+              <Button onClick={handleClick}>ADD TO CART</Button>
+            </AddContainer>
+          </InfoContainer>
+        </WrapperWhite>
       </Wrapper>
-
+      Add recommended items
       <Footer />
     </Container>
   );

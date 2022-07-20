@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  background-color: #fcf1ed;
+`;
 
 export const Wrapper = styled.div`
   padding: 50px;
+  display: flex;
+`;
+
+export const WrapperWhite = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  margin: 0px 15rem;
   display: flex;
 `;
 
@@ -13,66 +22,40 @@ export const ImageContainer = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  height: 80vh;
-  object-fit: cover;
+  height: 70vh;
+  object-fit: contain;
 `;
 
 export const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.h1`
-  font-weight: 200;
-`;
-
-export const Desc = styled.p`
-  margin: 20px 0px;
+  font-weight: 500;
+  font-size: 36px;
+  margin-bottom: 40px;
 `;
 
 export const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
+  margin-bottom: 20px;
 `;
 
-export const FilterContainer = styled.div`
-  width: 50%;
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
+export const Description = styled.div`
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
-
-export const Filter = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const FilterTitle = styled.span`
-  font-size: 20px;
-  font-weight: 200;
-`;
-
-export const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
-`;
-
-export const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-`;
-
-export const FilterSizeOption = styled.option``;
 
 export const AddContainer = styled.div`
-  width: 50%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 40px;
 `;
 
 export const AmountContainer = styled.div`
@@ -85,7 +68,7 @@ export const AmountContainer = styled.div`
 export const Amount = styled.span`
   width: 30px;
   height: 30px;
-  border: 1px solid teal;
+  border: 1px solid black;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -95,14 +78,14 @@ export const Amount = styled.span`
 
 export const Button = styled.button`
   padding: 15px;
-  border: 2px solid teal;
+  border: 2px solid black;
   background-color: white;
   border-radius: 5px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.5s ease;
   &:hover {
-    background-color: teal;
+    background-color: black;
     color: white;
   }
 `;

@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 20px 50px;
+  padding: 20px 15rem;
 `;
 
 export const Title = styled.h1`
