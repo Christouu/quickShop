@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 type PropDir = {
   direction: string;
@@ -64,6 +65,7 @@ export const Image = styled.img`
 export const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  ${mobile({ display: "none" })}
 `;
 
 export const Title = styled.h2`

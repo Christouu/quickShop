@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.nav`
   height: 100px;
   width: 100%;
   background-color: black;
   color: white;
+  ${mobile({ height: "50px", width: "100%" })}
 `;
 
 export const Nav = styled.div`
@@ -17,7 +19,8 @@ export const Nav = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 110;
+  ${mobile({ height: "50px", width: "100%" })}
 `;
 
 export const LogoContainer = styled.div`
@@ -30,9 +33,12 @@ export const Logo = styled.img`
   width: 200px;
   height: 100px;
   object-fit: cover;
+  ${mobile({ height: "50px", width: "50px" })}
 `;
 
-export const Links = styled.div``;
+export const Links = styled.div`
+  ${mobile({ display: "none" })}
+`;
 
 export const Ul = styled.ul`
   height: 100%;
@@ -56,6 +62,7 @@ export const Badge2 = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({ display: "none" })}
 `;
 
 export const BadgeContainer = styled.div`

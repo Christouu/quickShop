@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Wrapper = styled.div``;
 
@@ -6,6 +7,7 @@ export const H2 = styled.h2`
   text-align: center;
   max-width: 300px;
   max-height: 45px;
+  ${mobile({ fontSize: "24px" })}
 `;
 
 export const Container = styled.div`
@@ -27,7 +29,7 @@ export const Container = styled.div`
   border-radius: 10px;
   margin-bottom: 20px;
   max-width: 300px;
-  position: relative;
+  ${mobile({ height: "250px", minWidth: "250px" })}
 `;
 
 export const Image = styled.img`
@@ -37,6 +39,7 @@ export const Image = styled.img`
   max-width: 280px;
   max-height: 280px;
   object-fit: contain;
+  ${mobile({ maxWidth: "200px", maxHeight: "200px" })}
 `;
 
 export const Info = styled.div`
@@ -74,6 +77,8 @@ export const Icon = styled.div`
     background-color: #e9f5f5;
     transform: scale(1.2);
   }
+
+  /* ${mobile({ width: "25px", height: "25px" })} */
 `;
 
 export const SaleLogo = styled.div`
@@ -86,4 +91,6 @@ export const SaleLogo = styled.div`
   border-radius: 10px;
   top: 0;
   left: 0;
+
+  ${mobile({ fontSize: "22px" })}
 `;

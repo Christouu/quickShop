@@ -1,16 +1,19 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
   display: flex;
   background-color: #313638;
   width: 100%;
   height: 350px;
+  ${mobile({ flexDirection: "column", height: "100%" })}
 `;
 
 export const Info = styled.div`
   color: white;
   padding: 4rem 5rem;
   flex: 1;
+  ${mobile({ padding: "10px 20px" })}
 `;
 
 export const H3 = styled.h3`
@@ -18,7 +21,9 @@ export const H3 = styled.h3`
   padding-left: 10px;
 `;
 
-export const Description = styled.div``;
+export const Description = styled.div`
+  margin-left: 10px;
+`;
 
 export const DescriptionItem = styled.div`
   display: flex;
@@ -27,7 +32,6 @@ export const DescriptionItem = styled.div`
 
 export const Paragraph = styled.p`
   margin-top: 15px;
-  margin-left: 10px;
 `;
 
 export const Ul = styled.ul`
