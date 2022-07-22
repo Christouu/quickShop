@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
   width: 100%;
@@ -13,6 +14,7 @@ export const H1 = styled.h1`
   margin-top: 50px;
   font-size: 44px;
   margin-bottom: 30px;
+  ${mobile({ fontSize: "32px" })}
 `;
 
 export const Block = styled.div`
@@ -22,6 +24,7 @@ export const Block = styled.div`
   justify-content: space-around;
   margin-top: 80px;
   margin: 0 auto;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 export const InfoContainer = styled.div``;
@@ -41,6 +44,7 @@ export const Text = styled.p`
   margin-top: 20px;
   margin-left: 10px;
   margin-bottom: 40px;
+  ${mobile({ fontSize: "20px" })}
 `;
 
 export const ImgContainer = styled.img`
@@ -48,4 +52,5 @@ export const ImgContainer = styled.img`
   height: 400px;
   object-fit: contain;
   border-radius: 20px;
+  ${mobile({ width: "300px", height: "300px" })}
 `;
