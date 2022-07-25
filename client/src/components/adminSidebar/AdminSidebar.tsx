@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Bottom,
   Center,
@@ -12,8 +13,8 @@ import {
   Ul,
 } from "./AdminSidebar.styles";
 
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
@@ -24,7 +25,6 @@ import RssFeedIcon from "@mui/icons-material/RssFeed";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
 
 const AdminSidebar = () => {
   return (

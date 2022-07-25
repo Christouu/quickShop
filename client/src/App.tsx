@@ -1,7 +1,7 @@
 import "./App.css";
-import { Navigate, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Work from "./pages/Work/Work";
 import Cart from "./pages/Cart/Cart";
@@ -24,11 +24,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/sale" element={<ProductsOnSale />} />
       <Route path="/products/:id" element={<ProductInfo />} />
       <Route path="/work" element={<Work />} />
-      <Route path="/about" element={<About />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/sale" element={<ProductsOnSale />} />
       <Route path="/admin">
         <Route index element={<Admin />} />
         <Route path="users" element={<AdminUsers />} />
