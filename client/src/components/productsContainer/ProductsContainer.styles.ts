@@ -5,7 +5,6 @@ export const Container = styled.div`
   padding: 50px 0px;
   width: 100%;
   background-color: #fcf1ed;
-  ${mobile({ textAlign: "center" })}
 `;
 
 export const H1 = styled.h1`
@@ -24,7 +23,11 @@ export const InfoContainer = styled.div`
   justify-content: space-around;
   margin: 2rem 15rem;
 
-  ${mobile({ margin: "20px", padding: "0px 0.5rem" })}
+  ${mobile({
+    margin: "0 10px",
+    padding: "0 10px",
+    flexDirection: "column",
+  })}
 `;
 
 export const Button = styled.button`

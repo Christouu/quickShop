@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container2 = styled.div`
   background-color: #fcf1ed;
@@ -18,6 +19,8 @@ export const WrapperInput = styled.div`
   margin-top: 20px;
   margin-bottom: 50px;
   gap: 20px;
+
+  ${mobile({ margin: "0", flexDirection: "column" })}
 `;
 
 export const Wrapper = styled.div``;

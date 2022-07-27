@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
   width: 100%;
@@ -11,7 +12,11 @@ export const H1 = styled.h1`
 `;
 
 export const Wrapper = styled.div`
-  margin: 0 15rem;
+  margin: 20px 15rem;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 40px;
+  ${mobile({ margin: "20px 0px" })};
 `;
 
 export const Text = styled.p`
@@ -20,6 +25,12 @@ export const Text = styled.p`
   font-size: 30px;
   line-height: 1.5;
   padding: 0 150px;
+  ${mobile({
+    margin: "20px 0",
+    fontSize: "22px",
+    padding: "20px 10px",
+    lineHeight: "1",
+  })}
 `;
 
 export const Shops = styled.div`
@@ -34,6 +45,7 @@ export const ShopContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  ${mobile({ alignItems: "center" })}
 `;
 
 export const Image = styled.img`
@@ -44,8 +56,10 @@ export const Image = styled.img`
   transition: all 0.5s ease;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
+
+  ${mobile({ width: "250px", height: "250px" })}
 `;
 
 export const ShopInfo = styled.p`

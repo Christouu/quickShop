@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
   background-color: #fcf1ed;
@@ -7,6 +8,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${mobile({ padding: "0" })}
 `;
 
 export const WrapperWhite = styled.div`
@@ -14,6 +16,12 @@ export const WrapperWhite = styled.div`
   border-radius: 10px;
   margin: 0px 15rem;
   display: flex;
+  ${mobile({
+    flexDirection: "column",
+    margin: "0",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
 `;
 
 export const ImageContainer = styled.div`
@@ -24,6 +32,7 @@ export const Image = styled.img`
   width: 100%;
   height: 70vh;
   object-fit: contain;
+  ${mobile({ height: "250px", width: "250px" })}
 `;
 
 export const InfoContainer = styled.div`
@@ -56,6 +65,12 @@ export const AddContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
+
+  ${mobile({
+    justifyContent: "center",
+    marginBottom: "10px",
+    flexDirection: "column",
+  })}
 `;
 
 export const AmountContainer = styled.div`
@@ -88,4 +103,6 @@ export const Button = styled.button`
     background-color: black;
     color: white;
   }
+
+  ${mobile({ width: "100%", margin: "0 auto" })}
 `;
