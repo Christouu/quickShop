@@ -23,8 +23,6 @@ const Products = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [products, setProducts] = useState([]);
 
-  const history = useNavigate();
-
   // const query = useQuery();
   // const page = query.get("page") || 1;
   // const searchQuery = query.get("searchQuery");
