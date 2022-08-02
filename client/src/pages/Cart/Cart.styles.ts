@@ -68,6 +68,7 @@ export const Product = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 20px 0px;
+  position: relative;
 `;
 
 export const ProductDetails = styled.div`
@@ -115,6 +116,13 @@ export const Price = styled.div`
   font-size: 30px;
   font-weight: 400;
   margin: 5px;
+`;
+
+export const ProductDelete = styled.div`
+  position: absolute;
+  top: 0;
+  right: 50px;
+  cursor: pointer;
 `;
 
 export const HR = styled.hr`

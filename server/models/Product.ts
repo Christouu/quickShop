@@ -22,6 +22,10 @@ const ProductSchema = new mongooseProduct.Schema(
     quantity: {
       type: Number,
     },
+    amount: {
+      type: Number,
+      default: 1,
+    },
     categories: {
       type: Array,
     },

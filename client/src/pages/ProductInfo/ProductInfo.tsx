@@ -27,7 +27,7 @@ import { publicRequest } from "../../requestMethods";
 
 const ProductInfo: React.FC = () => {
   const [product, setProduct] = useState<any>({});
-  const [quantity, setQuantity] = useState<number>(1);
+  const [amount, setAmount] = useState<number>(1);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -50,16 +50,18 @@ const ProductInfo: React.FC = () => {
 
   const handleQuantity = (string: string) => {
     if (string === "desc") {
-      quantity > 1 && setQuantity((prev) => prev - 1);
+      amount > 1 && setAmount((prev) => prev - 1);
     } else if (string === "inc") {
-      setQuantity((prev) => prev + 1);
+      setAmount((prev) => prev + 1);
     }
   };
 
   const handleClick = () => {
     //handle cart
-    dispatch(addProduct({ ...product, quantity }));
+    dispatch(addProduct({ ...product, amount }));
   };
+
+  console.log(product);
 
   return (
     <Container>
@@ -82,7 +84,7 @@ const ProductInfo: React.FC = () => {
                   style={{ cursor: "pointer", marginLeft: "10px" }}
                   onClick={() => handleQuantity("desc")}
                 />
-                <Amount>{quantity}</Amount>
+                <Amount>{amount}</Amount>
                 <AddIcon
                   style={{ cursor: "pointer" }}
                   onClick={() => handleQuantity("inc")}

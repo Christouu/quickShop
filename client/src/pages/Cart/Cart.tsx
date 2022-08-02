@@ -1,3 +1,5 @@
+import { RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Bottom,
   Button,
@@ -7,6 +9,7 @@ import {
   Info,
   Price,
   Product,
+  ProductDelete,
   ProductDetails,
   ProductImage,
   ProductName,
@@ -32,110 +35,72 @@ import Line from "../../components/line/Line";
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import ClearIcon from "@mui/icons-material/Clear";
+import { clear, deleteProduct } from "../../redux/cartRedux";
 
 const Cart = () => {
+  const { products, quantity, totalPrice } = useSelector(
+    (state: RootState) => state.cart
+  );
+
+  const dispatch = useDispatch();
+
+  const handleDelete = (index: any, product: any) => {
+    console.log(index);
+
+    dispatch(deleteProduct({ index, product }));
+  };
+
+  const handleClear = () => {
+    dispatch(clear());
+  };
+
   return (
     <Container>
       <Navigation />
       <Wrapper>
-        <Title>Your Bag</Title>
+        <Title>Количка</Title>
         <Line></Line>
         <Top>
-          <TopButton option="normal">Continure Shopping</TopButton>
-          <TopText>Shopping Bag(2)</TopText>
+          <TopButton option="normal" onClick={handleClear}>
+            Clear Cart
+          </TopButton>
+          <TopText>Продукти ({quantity})</TopText>
           <TopButton option="filled">Checkout Now </TopButton>
         </Top>
         <WrapperWhite>
           <Bottom>
             <Info>
-              <Product>
-                <ProductDetails>
-                  <ProductImage src="https://images.prom.ua/2081880662_voda-vodichka-05l.jpg" />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> Vodichka
-                    </ProductName>
-                    <ProductQuantity>
-                      <b>Quantity:</b> 0.5 L
-                    </ProductQuantity>
-                  </Details>
-                </ProductDetails>
-                <ProductPrice>
-                  <ProductPriceAmountContainer>
-                    <AddIcon />
-                    <ProductPriceAmount>2</ProductPriceAmount>
-                    <RemoveIcon />
-                  </ProductPriceAmountContainer>
-                  <Price>$ 30</Price>
-                </ProductPrice>
-              </Product>
-              <HR />
-              <Product>
-                <ProductDetails>
-                  <ProductImage src="https://images.prom.ua/2081880662_voda-vodichka-05l.jpg" />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> Vodichka
-                    </ProductName>
-                    <ProductQuantity>
-                      <b>Quantity:</b> 0.5 L
-                    </ProductQuantity>
-                  </Details>
-                </ProductDetails>
-                <ProductPrice>
-                  <ProductPriceAmountContainer>
-                    <AddIcon />
-                    <ProductPriceAmount>2</ProductPriceAmount>
-                    <RemoveIcon />
-                  </ProductPriceAmountContainer>
-                  <Price>$ 30</Price>
-                </ProductPrice>
-              </Product>
-              <HR />
-              <Product>
-                <ProductDetails>
-                  <ProductImage src="https://images.prom.ua/2081880662_voda-vodichka-05l.jpg" />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> Vodichka
-                    </ProductName>
-                    <ProductQuantity>
-                      <b>Quantity:</b> 0.5 L
-                    </ProductQuantity>
-                  </Details>
-                </ProductDetails>
-                <ProductPrice>
-                  <ProductPriceAmountContainer>
-                    <AddIcon />
-                    <ProductPriceAmount>2</ProductPriceAmount>
-                    <RemoveIcon />
-                  </ProductPriceAmountContainer>
-                  <Price>$ 30</Price>
-                </ProductPrice>
-              </Product>
-              <HR />
-              <Product>
-                <ProductDetails>
-                  <ProductImage src="https://images.prom.ua/2081880662_voda-vodichka-05l.jpg" />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> Vodichka
-                    </ProductName>
-                    <ProductQuantity>
-                      <b>Quantity:</b> 0.5 L
-                    </ProductQuantity>
-                  </Details>
-                </ProductDetails>
-                <ProductPrice>
-                  <ProductPriceAmountContainer>
-                    <AddIcon />
-                    <ProductPriceAmount>2</ProductPriceAmount>
-                    <RemoveIcon />
-                  </ProductPriceAmountContainer>
-                  <Price>$ 30</Price>
-                </ProductPrice>
-              </Product>
-              <HR />
+              {products?.map((p: any, i: any) => (
+                <div key={p._id + i}>
+                  <Product>
+                    <ProductDelete onClick={() => handleDelete(i, p)}>
+                      <ClearIcon />
+                    </ProductDelete>
+                    <ProductDetails>
+                      <ProductImage src={p.image} />
+                      <Details>
+                        <ProductName>
+                          <b>Product:</b> {p.title}
+                        </ProductName>
+
+                        <ProductQuantity>
+                          <b>Quantity:</b> {p.quantity} L
+                        </ProductQuantity>
+                      </Details>
+                    </ProductDetails>
+                    <ProductPrice>
+                      <ProductPriceAmountContainer>
+                        <AddIcon />
+                        <ProductPriceAmount>{p.amount}</ProductPriceAmount>
+                        <RemoveIcon />
+                      </ProductPriceAmountContainer>
+                      <Price>$ {p.price * p.amount}</Price>
+                    </ProductPrice>
+                  </Product>
+                  <HR />
+                </div>
+              ))}
             </Info>
             <Summary>
               <SummaryTitle>Order Summary</SummaryTitle>
@@ -153,7 +118,7 @@ const Cart = () => {
               </SummaryItem>
               <SummaryItem option="total">
                 <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice>$ 90</SummaryItemPrice>
+                <SummaryItemPrice>$ {totalPrice?.toFixed(2)}</SummaryItemPrice>
               </SummaryItem>
               <Button>Checkout Now</Button>
             </Summary>
