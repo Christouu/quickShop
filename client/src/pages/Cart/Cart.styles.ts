@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 interface Props {
   option?: string;
@@ -10,11 +11,13 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   padding: 20px 15rem;
+  ${mobile({ padding: "0" })}
 `;
 
 export const Title = styled.h1`
   text-align: center;
   font-size: 44px;
+  ${mobile({ fontSize: "34px" })}
 `;
 
 export const WrapperWhite = styled.div`
@@ -29,6 +32,7 @@ export const Top = styled.div`
   justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 40px;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 export const TopButton = styled.button<Props>`
@@ -43,8 +47,10 @@ export const TopButton = styled.button<Props>`
   transition: all 0.5s ease;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
+
+  ${mobile({ marginBottom: "10px" })}
 `;
 
 export const TopText = styled.span`
@@ -52,12 +58,14 @@ export const TopText = styled.span`
   cursor: pointer;
   font-size: 26px;
   text-align: center;
+  ${mobile({ marginBottom: "15px", fontSize: "22px" })}
 `;
 
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 30px 0px;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 export const Info = styled.div`
@@ -69,11 +77,13 @@ export const Product = styled.div`
   justify-content: space-between;
   margin: 20px 0px;
   position: relative;
+  ${mobile({ flexDirection: "column", alignItems: "center" })}
 `;
 
 export const ProductDetails = styled.div`
   flex: 2;
   display: flex;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 export const ProductImage = styled.img`
@@ -89,7 +99,9 @@ export const Details = styled.div`
   justify-content: space-around;
 `;
 
-export const ProductName = styled.span``;
+export const ProductName = styled.span`
+  ${mobile({ marginBottom: "10px" })}
+`;
 
 export const ProductQuantity = styled.span``;
 
@@ -123,6 +135,7 @@ export const ProductDelete = styled.div`
   top: 0;
   right: 50px;
   cursor: pointer;
+  ${mobile({ right: "15px" })}
 `;
 
 export const HR = styled.hr`
