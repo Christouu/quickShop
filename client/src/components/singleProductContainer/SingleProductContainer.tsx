@@ -31,7 +31,7 @@ const SingleProductContainer = ({ product }: any) => {
         {product.onSale && <SaleLogo>Промоция</SaleLogo>}
         <Info>
           <Icon onClick={handleCart}>
-            <Link to={"/"} style={{ textDecoration: "none", color: "blue" }}>
+            <Link to={""} style={{ textDecoration: "none", color: "blue" }}>
               <ShoppingCartIcon />
             </Link>
           </Icon>
@@ -44,7 +44,7 @@ const SingleProductContainer = ({ product }: any) => {
             </Link>
           </Icon>
           <Icon>
-            <Link to={"/"} style={{ textDecoration: "none", color: "red" }}>
+            <Link to={""} style={{ textDecoration: "none", color: "red" }}>
               <FavoriteIcon />
             </Link>
           </Icon>
