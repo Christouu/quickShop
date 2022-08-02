@@ -46,8 +46,6 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const handleDelete = (index: any, product: any) => {
-    console.log(index);
-
     dispatch(deleteProduct({ index, product }));
   };
 
@@ -63,10 +61,10 @@ const Cart = () => {
         <Line></Line>
         <Top>
           <TopButton option="normal" onClick={handleClear}>
-            Clear Cart
+            Изчисти количката
           </TopButton>
           <TopText>Продукти ({quantity})</TopText>
-          <TopButton option="filled">Checkout Now </TopButton>
+          <TopButton option="filled">Продължи пазаруване </TopButton>
         </Top>
         <WrapperWhite>
           <Bottom>
@@ -81,21 +79,21 @@ const Cart = () => {
                       <ProductImage src={p.image} />
                       <Details>
                         <ProductName>
-                          <b>Product:</b> {p.title}
+                          <b>Продукт:</b> {p.title}
                         </ProductName>
 
                         <ProductQuantity>
-                          <b>Quantity:</b> {p.quantity} L
+                          <b>Количество:</b> {p.quantity} L
                         </ProductQuantity>
                       </Details>
                     </ProductDetails>
                     <ProductPrice>
                       <ProductPriceAmountContainer>
-                        <AddIcon />
-                        <ProductPriceAmount>{p.amount}</ProductPriceAmount>
-                        <RemoveIcon />
+                        <ProductPriceAmount>
+                          Бройка: {p.amount}
+                        </ProductPriceAmount>
                       </ProductPriceAmountContainer>
-                      <Price>$ {p.price * p.amount}</Price>
+                      <Price>Цена: {p.price * p.amount} бгн</Price>
                     </ProductPrice>
                   </Product>
                   <HR />
@@ -103,24 +101,26 @@ const Cart = () => {
               ))}
             </Info>
             <Summary>
-              <SummaryTitle>Order Summary</SummaryTitle>
+              <SummaryTitle>Поръчка</SummaryTitle>
               <SummaryItem>
-                <SummaryItemText>Subtotal</SummaryItemText>
+                <SummaryItemText>Цена:</SummaryItemText>
                 <SummaryItemPrice>$ 80</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
-                <SummaryItemText>Estimated Shipping</SummaryItemText>
+                <SummaryItemText>Доставка:</SummaryItemText>
                 <SummaryItemPrice>$ 10</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
-                <SummaryItemText>Discount</SummaryItemText>
+                <SummaryItemText>Намаление:</SummaryItemText>
                 <SummaryItemPrice>$ -2.99</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem option="total">
-                <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice>$ {totalPrice?.toFixed(2)}</SummaryItemPrice>
+                <SummaryItemText>Обща сума</SummaryItemText>
+                <SummaryItemPrice>
+                  {totalPrice?.toFixed(2)} лева
+                </SummaryItemPrice>
               </SummaryItem>
-              <Button>Checkout Now</Button>
+              <Button>Плати</Button>
             </Summary>
           </Bottom>
         </WrapperWhite>
