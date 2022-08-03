@@ -19,39 +19,39 @@ const Navigation = () => {
   const cart = useSelector((state: RootState) => state.cart);
 
   return (
-    <Container>
+    <Container data-testid="navigationContainer">
       <Nav>
         <LogoContainer>
           <Logo src="/assets/quickLogo.png" alt="Quick logo" />
         </LogoContainer>
         <Links>
-          <Ul>
+          <Ul data-testid="dataLinks">
             <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-              <Li>Начало</Li>
+              <Li data-testid="dataLink">Начало</Li>
             </Link>
             <Link
               to={"/products"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Li>Продукти</Li>
+              <Li data-testid="dataLink">Продукти</Li>
             </Link>
             <Link
               to={"/sale"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Li>Продукти на промоция</Li>
+              <Li data-testid="dataLink">Продукти на промоция</Li>
             </Link>
             <Link
               to={"/work"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Li>Работа</Li>
+              <Li data-testid="dataLink">Работа</Li>
             </Link>
             <Link
               to={"/about"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Li>За Нас</Li>
+              <Li data-testid="dataLink">За Нас</Li>
             </Link>
           </Ul>
         </Links>
