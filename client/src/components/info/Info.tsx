@@ -13,41 +13,46 @@ import Line from "../line/Line";
 
 const Info = () => {
   return (
-    <Container>
-      <H1>Защо да пазарувате при нас ?</H1>
+    <Container data-testid="infoContainer">
+      <H1 data-testid="infoHeading">Защо да пазарувате при нас ?</H1>
       <Line />
 
       <Block>
-        <Ul>
-          <Li>
+        <Ul data-testid="infoUl">
+          <Li data-testid="infoLi">
             <DoneIcon
               style={{
                 color: "red",
                 paddingBottom: "20px",
                 paddingRight: "10px",
               }}
+              data-testid="infoIcon"
             />
-            <Text>Aтрактивни оферти и отстъпки</Text>
+            <Text data-testid="infoText">Aтрактивни оферти и отстъпки</Text>
           </Li>
-          <Li>
+          <Li data-testid="infoLi">
             <DoneIcon
               style={{
                 color: "red",
                 paddingBottom: "20px",
                 paddingRight: "10px",
               }}
+              data-testid="infoIcon"
             />
-            <Text>Над 1800 продукта предлагани в QUICK</Text>
+            <Text data-testid="infoText">
+              Над 1800 продукта предлагани в QUICK
+            </Text>
           </Li>
-          <Li>
+          <Li data-testid="infoLi">
             <DoneIcon
               style={{
                 color: "red",
                 paddingBottom: "20px",
                 paddingRight: "10px",
               }}
+              data-testid="infoIcon"
             />
-            <Text>Aтрактивни оферти и отстъпки</Text>
+            <Text data-testid="infoText">Aтрактивни оферти и отстъпки</Text>
           </Li>
         </Ul>
         <ImgContainer src="assets/quickCoffee.jpg" />
