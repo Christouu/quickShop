@@ -12,19 +12,19 @@ interface Props {
 
 const ProductInfo: React.FC<Props> = ({ img, id }) => {
   return (
-    <Container>
+    <Container data-testid="productInfo">
       <Circle />
       <Image src={img} />
       <Info>
-        <Icon>
+        <Icon data-testid="icon">
           <ShoppingCartOutlinedIcon />
         </Icon>
-        <Icon>
+        <Icon data-testid="icon">
           <Link to={`/product/${id}`}>
             <SearchIcon />
           </Link>
         </Icon>
-        <Icon>
+        <Icon data-testid="icon">
           <FavoriteBorderIcon />
         </Icon>
       </Info>
