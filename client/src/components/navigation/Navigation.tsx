@@ -56,15 +56,19 @@ const Navigation = () => {
           </Ul>
         </Links>
 
-        <Badge2>
+        <Badge2 data-testid="badge2">
           <Link to={"/cart"} style={{ textDecoration: "none", color: "white" }}>
             <BadgeContainer>
-              <Badge badgeContent={cart.quantity} color="primary">
+              <Badge
+                data-testid="shoppingCart"
+                badgeContent={cart.quantity}
+                color="primary"
+              >
                 <ShoppingCartIcon style={{ cursor: "pointer" }} />
               </Badge>
             </BadgeContainer>
           </Link>
-          <Ul>
+          <Ul data-testid="badge2Ul">
             <Link
               to={"/login"}
               style={{ textDecoration: "none", color: "white" }}

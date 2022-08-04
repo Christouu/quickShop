@@ -31,7 +31,7 @@ test("render logo", () => {
   expect(value).toBe("/assets/quickLogo.png");
 });
 
-test("render ul", () => {
+test("render links ul", () => {
   render(
     <Provider store={store}>
       <Navigation />
@@ -43,7 +43,7 @@ test("render ul", () => {
   expect(ul).toBeInTheDocument();
 });
 
-test("render Li and check if there are 5 li items", () => {
+test("render Li and check if there are 5 li items and check their text contents", () => {
   render(
     <Provider store={store}>
       <Navigation />
@@ -53,4 +53,45 @@ test("render Li and check if there are 5 li items", () => {
 
   const li = screen.getAllByTestId("dataLink");
   expect(li.length).toBe(5);
+  expect(li[0].textContent).toBe("Начало");
+  expect(li[1].textContent).toBe("Продукти");
+  expect(li[2].textContent).toBe("Продукти на промоция");
+  expect(li[3].textContent).toBe("Работа");
+  expect(li[4].textContent).toBe("За Нас");
+});
+
+test("render Badge2", () => {
+  render(
+    <Provider store={store}>
+      <Navigation />
+    </Provider>,
+    { wrapper: MemoryRouter }
+  );
+
+  const badge2 = screen.getByTestId("badge2");
+  expect(badge2).toBeInTheDocument();
+});
+
+test("render shoppingcart icon ", () => {
+  render(
+    <Provider store={store}>
+      <Navigation />
+    </Provider>,
+    { wrapper: MemoryRouter }
+  );
+
+  const cart = screen.getByTestId("shoppingCart");
+  expect(cart).toBeInTheDocument();
+});
+
+test("render badge2 ul ", () => {
+  render(
+    <Provider store={store}>
+      <Navigation />
+    </Provider>,
+    { wrapper: MemoryRouter }
+  );
+
+  const ul = screen.getByTestId("badge2Ul");
+  expect(ul).toBeInTheDocument();
 });

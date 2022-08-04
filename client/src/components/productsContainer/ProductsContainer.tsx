@@ -28,15 +28,17 @@ const ProductsContainer = () => {
   }, []);
 
   return (
-    <Container>
+    <Container data-testid="productsContainer">
       <H1>Продукти</H1>
       <Line />
-      <InfoContainer>
+      <InfoContainer data-testid="infoContainer">
         {products.map((p: any) => (
-          <SingleProductContainer key={p._id} product={p} />
+          <div data-testid="product" key={p._id}>
+            <SingleProductContainer product={p} />
+          </div>
         ))}
       </InfoContainer>
-      <Button>
+      <Button role="button">
         <Link
           to={"/products"}
           style={{ textDecoration: "none", color: "white" }}
