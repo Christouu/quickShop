@@ -40,7 +40,6 @@ For the Back-end I am using:
   - Mongoose
   
 This project will be upgraded in the near future like :
-  - Needs to be added Stripe for payment.
   - Profile page for users to save their favourite products, user information, profile picture, transaction history.
   - Comment section under products so that users write their opinions on products (Google comments or handmade comments section).
   - Newsfeed page from the company to advertise new products or when products are on sale.
