@@ -2,8 +2,12 @@ import "./AdminList.css";
 import { Container } from "./AdminList.styles";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
+import { deleteProduct } from "../../redux/apiCalls";
+import { useDispatch } from "react-redux";
 
 const AdminList = ({ data, type }: any) => {
+  const dispatch = useDispatch();
+
   const userColumns: GridColDef[] = [
     { field: "_id", headerName: "ID", width: 240 },
     {
@@ -99,7 +103,7 @@ const AdminList = ({ data, type }: any) => {
               onClick={() => handleView(params.row._id)}
             >
               <Link
-                to={`/admin`}
+                to={`/admin/products/${params.row._id}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 View
@@ -118,7 +122,7 @@ const AdminList = ({ data, type }: any) => {
   ];
 
   const handleDelete = (id: any) => {
-    console.log(id);
+    deleteProduct(dispatch, id);
   };
   const handleView = (id: any) => {
     console.log(id);

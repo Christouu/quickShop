@@ -13,7 +13,6 @@ const AdminUsers = () => {
     const getUsers = async () => {
       try {
         const response = await privateRequest.get("user");
-        console.log(response.data);
 
         setUsers(response.data);
       } catch (error) {
