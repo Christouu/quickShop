@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 import { useDispatch } from "react-redux";
 import userReducer from "./userRedux";
 import cartReducer from "./cartRedux";
+import productRedux from "./productRedux";
 
 const persistConfig = {
   key: "root",
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
+  product: productRedux,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

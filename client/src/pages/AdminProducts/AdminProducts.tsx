@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AdminList from "../../components/adminList/AdminList";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import AdminSidebar from "../../components/adminSidebar/AdminSidebar";
-import { publicRequest } from "../../requestMethods";
+import { getProducts } from "../../redux/apiCalls";
+import { RootState } from "../../redux/store";
 import { Container, ListContainer } from "./AdminProducts.styles";
 
 const AdminProducts = () => {
-  const [products, setProducts] = useState([]);
+  const products = useSelector((state: RootState) => state.product.products);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await publicRequest.get("product/find");
-        console.log(response.data);
-
-        setProducts(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getProducts();
-  }, []);
+    getProducts(dispatch);
+  }, [dispatch]);
 
   return (
     <Container>
