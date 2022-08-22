@@ -66,14 +66,16 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const response = await privateRequest.post("/checkout/payment", {
+        const res = await publicRequest.post("/checkout/payment", {
           //@ts-ignore
           tokenId: stripeToken.id,
           amount: 500,
         });
-        //@ts-ignore
-        history("/success", { data: response.data });
-      } catch (error) {}
+
+        history("/success", { state: res.data });
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     stripeToken && makeRequest();

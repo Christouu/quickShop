@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
-
+const dotenv = require("dotenv");
 const router = require("express").Router();
-const stripe = require("stripe")(process.env.STRIPE_KEY);
+dotenv.config();
+// const stripe = require("stripe")(process.env.STRIPE_KEY);
+const KEY = process.env.STRIPE_KEY;
+const stripe = require("stripe")(KEY);
 
 router.post("/payment", (req: Request, res: Response) => {
   //create charges from the backend, you will receive tokenId from FE and amount to pay

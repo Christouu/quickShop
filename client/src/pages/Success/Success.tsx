@@ -5,8 +5,6 @@ import Navigation from "../../components/navigation/Navigation";
 const Success = () => {
   const location = useLocation();
 
-  console.log(location);
-
   return (
     <>
       <Navigation />
