@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Admin from "./pages/Admin/Admin";
+import Success from "./pages/Success/Success";
 import Products from "./pages/Products/Products";
 import Register from "./pages/Register/Register";
 import NotFound from "./components/notFound/NotFound";
@@ -28,6 +29,7 @@ function App() {
       <Route path="/work" element={<Work />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/about" element={<About />} />
+      <Route path="/success" element={<Success />} />
       <Route path="/sale" element={<ProductsOnSale />} />
       <Route path="/admin">
         <Route index element={<Admin />} />

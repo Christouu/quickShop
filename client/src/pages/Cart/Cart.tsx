@@ -1,4 +1,5 @@
 import { RootState } from "../../redux/store";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Bottom,
@@ -30,18 +31,25 @@ import {
   WrapperWhite,
 } from "./Cart.styles";
 import Footer from "../../components/footer/Footer";
-import Navigation from "../../components/navigation/Navigation";
 import Line from "../../components/line/Line";
+import Navigation from "../../components/navigation/Navigation";
 
 import ClearIcon from "@mui/icons-material/Clear";
+import StripeCheckout from "react-stripe-checkout";
+import { privateRequest, publicRequest } from "../../requestMethods";
 import { clear, deleteProduct } from "../../redux/cartRedux";
+import { useNavigate } from "react-router-dom";
+
+const KEY = process.env.REACT_APP_STRIPE;
 
 const Cart = () => {
   const { products, quantity, totalPrice } = useSelector(
     (state: RootState) => state.cart
   );
+  const [stripeToken, setStripeToken] = useState(null);
 
   const dispatch = useDispatch();
+  const history = useNavigate();
 
   const handleDelete = (index: any, product: any) => {
     dispatch(deleteProduct({ index, product }));
@@ -50,6 +58,26 @@ const Cart = () => {
   const handleClear = () => {
     dispatch(clear());
   };
+
+  const onToken = (token: any) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const response = await privateRequest.post("/checkout/payment", {
+          //@ts-ignore
+          tokenId: stripeToken.id,
+          amount: 500,
+        });
+        //@ts-ignore
+        history("/success", { data: response.data });
+      } catch (error) {}
+    };
+
+    stripeToken && makeRequest();
+  }, [stripeToken, totalPrice, history]);
 
   return (
     <Container>
@@ -118,7 +146,19 @@ const Cart = () => {
                   {totalPrice?.toFixed(2)} лева
                 </SummaryItemPrice>
               </SummaryItem>
-              <Button>Плати</Button>
+              <StripeCheckout
+                name="QUICK SHOP"
+                image="/assets/quickLogo.png"
+                billingAddress
+                shippingAddress
+                description={`Вашате сума е ${totalPrice} лева`}
+                amount={totalPrice * 100}
+                token={onToken}
+                //@ts-ignore
+                stripeKey={KEY}
+              >
+                <Button>Плати</Button>
+              </StripeCheckout>
             </Summary>
           </Bottom>
         </WrapperWhite>

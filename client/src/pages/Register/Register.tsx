@@ -53,25 +53,25 @@ const Register = () => {
             type="text"
             name="username"
             placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e: any) => setUsername(e.target.value)}
           />
           <Input
             type="text"
             name="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: any) => setEmail(e.target.value)}
           />
           <Input
             type="password"
             name="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: any) => setPassword(e.target.value)}
           />
           <Input
             type="password"
             name="passwordRepeat"
             placeholder="Confirm Password"
-            onChange={(e) => setPasswordRepeat(e.target.value)}
+            onChange={(e: any) => setPasswordRepeat(e.target.value)}
           />
           <Span>
             By creating an account , I consent to the processing of my personal

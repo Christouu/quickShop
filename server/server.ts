@@ -7,6 +7,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
 const productRouter = require("./routes/product");
+const stripeRouter = require("./routes/stripe");
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.use("/api/checkout", stripeRouter);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running");

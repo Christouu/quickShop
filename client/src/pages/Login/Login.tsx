@@ -42,14 +42,14 @@ const Login = () => {
             type="text"
             name="username"
             id="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e: any) => setUsername(e.target.value)}
           />
           <Label htmlFor="password">Password</Label>
           <Input
             type="password"
             name="password"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: any) => setPassword(e.target.value)}
           />
           <Button onClick={handleClick} disabled={isFetching}>
             Login
