@@ -17,6 +17,7 @@ import AdminUsers from "./pages/AdminUsers/AdminUsers";
 import ProductInfo from "./pages/ProductInfo/ProductInfo";
 import AdminProducts from "./pages/AdminProducts/AdminProducts";
 import ProductsOnSale from "./pages/ProductsOnSale/ProductsOnSale";
+import AdminProductFormPage from "./pages/AdminProductFormPage/AdminProductForm";
 
 function App() {
   const user = useSelector((state: RootState) => state.user.currentUser);
@@ -35,6 +36,7 @@ function App() {
         <Route index element={<Admin />} />
         <Route path="users" element={<AdminUsers />} />
         <Route path="products" element={<AdminProducts />} />
+        <Route path="products/:id" element={<AdminProductFormPage />} />
       </Route>
 
       <Route path="/login" element={user ? <Navigate to={"/"} /> : <Login />} />
