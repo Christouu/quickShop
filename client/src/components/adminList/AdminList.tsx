@@ -39,12 +39,7 @@ const AdminList = ({ data, type }: any) => {
       renderCell: (params: GridValueGetterParams) => {
         return (
           <div className="cellAction">
-            <div
-              className="viewButton"
-              onClick={() => handleView(params.row._id)}
-            >
-              View
-            </div>
+            <div className="viewButton">View</div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
@@ -98,10 +93,7 @@ const AdminList = ({ data, type }: any) => {
       renderCell: (params: GridValueGetterParams) => {
         return (
           <div className="cellAction">
-            <div
-              className="viewButton"
-              onClick={() => handleView(params.row._id)}
-            >
+            <div className="viewButton">
               <Link
                 to={`/admin/products/${params.row._id}`}
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -123,9 +115,6 @@ const AdminList = ({ data, type }: any) => {
 
   const handleDelete = (id: any) => {
     deleteProduct(dispatch, id);
-  };
-  const handleView = (id: any) => {
-    console.log(id);
   };
 
   return (
